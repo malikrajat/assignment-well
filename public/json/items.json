@@ -1,0 +1,82 @@
+[
+	{
+		"id": 1245,
+		"title": "Tulsi nuts & dry fruits California almonds premium 200 g",
+		"description": "100% Best quality product from the house of Tulsi. Tulsi California Almonds are the most popular nuts sourced from the USA. A favorite of dieters, in recent years almonds have become famous for their versatility and health benefits. They are a very good source of energy-encouragers riboflavin, manganese, and copper. Almonds are naturally gluten-free and are a versatile, nutrient-rich addition to gluten-free diets.Storage Information- Keep it airtight & refrigerated for optimum freshness.",
+		"gst": 0,
+		"saleTax": 0,
+		"price": 175.0,
+		"image": "https://images-na.ssl-images-amazon.com/images/I/81UyEq2AdoL._SL1500_.jpg",
+		"category": 3
+	},
+	{
+		"id": 3456,
+		"title": "AmazonBasics 127cm (50 inches) Fire TV Edition 4K Ultra HD Smart LED",
+		"description": "Resolution: 4K Ultra HD (3840 x 2160) | Refresh Rate: 60 hertz | 178° wide viewing angle Connectivity: 3 HDMI 2.0 ports to connect set top box, Blu Ray players, gaming console | 1 USB 3.0 and 1 USB 2.0 ports to connect hard drives and other USB devices | IR Port to control connected devices like Soundbars, Receivers and Set top boxes",
+		"gst": 10,
+		"saleTax": 5,
+		"price": 32549.0,
+		"image": "https://images-na.ssl-images-amazon.com/images/I/81c5klKpUdL._SL1500_.jpg",
+		"category": 1
+	},
+	{
+		"id": 5674,
+		"title": "EYEBOGLER Men's Solid Regular Fit T-Shirt",
+		"description": "Care Instructions: Machine Wash Fit Type: Regular Fit Moisture wicking fabric is quick-drying, ultra-soft & has a soft feel, keeping you comfortable through any athletic activity.",
+		"gst": 10,
+		"saleTax": 0,
+		"price": 299.0,
+		"image": "https://images-na.ssl-images-amazon.com/images/I/61tZQmRl5oL._UL1232_.jpg",
+		"category": 2
+	},
+	{
+		"id": 5670,
+		"title": "Fresh Banana Robusta, 1kg",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem",
+		"gst": 10,
+		"saleTax": 5,
+		"price": 55.0,
+		"image": "https://images-na.ssl-images-amazon.com/images/I/413Q%2BGBBZWL.jpg",
+		"category": 4
+	},
+	{
+		"id": 5423,
+		"title": "Alkin Study Table and chair for computer work and lamp",
+		"description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book ",
+		"gst": 10,
+		"saleTax": 5,
+		"price": 15989,
+		"image": "https://images.woodenstreet.de/image/cache/data%2Fstudy-table%2Falkin-study-table%2Frevised%2Fhoney%2Flook-1100x768.jpg?im-bypass=true",
+		"category": 5
+	},
+	{
+		"id": 9754,
+		"title": "MacBook Pro (13-inch, 8GB RAM, 256GB SSD, 1.4GHz Quad-core )",
+		"description": "Eighth-generation quad-core Intel Core i5 processor Brilliant Retina display with True Tone technology Backlit Magic Keyboard Touch Bar and Touch ID  Intel Iris Plus Graphics 645 Ultra-fast SSD",
+		"gst": 10,
+		"saleTax": 5,
+		"price": 15989,
+		"image": "https://images-na.ssl-images-amazon.com/images/I/71QS992FD5L._SL1500_.jpg",
+		"category": 6
+	},
+	{
+		"id": 3457,
+		"title": "New Apple iPhone 12 Mini (128GB) - Blue",
+		"description": "5.4-inch (13.7 cm diagonal) Super Retina XDR display Ceramic Shield, tougher than any smartphone glass A14 Bionic chip, the fastest chip ever in a smartphone Advanced dual-camera system with 12MP Ultra Wide and Wide cameras; Night mode, Deep Fusion, Smart HDR 3, 4K Dolby Vision HDR recording",
+		"gst": 10,
+		"saleTax": 5,
+		"price": 71900.0,
+		"image": "https://images-na.ssl-images-amazon.com/images/I/71QS992FD5L._SL1500_.jpg",
+		"category": 7
+	},
+	{
+		"id": 7124,
+		"title": "The Power of Your Subconscious Mind ",
+		"description": "An exquisitely designed leather-bound edition of one of the most powerful self-help title, this book comes with a ribbon bookmark, gilded edges and beautiful endpapers. Ideal to be read and treasured, it makes for a perfect addition to any library. This remarkable book by Dr. Joseph Murphy, one of the pioneering voices of affirmative-thinking, will unlock for you The truly staggering powers of your Subconscious mind. Combining time-honoured spiritual wisdom with cutting edge scientific research, Dr. Murphy explains",
+		"gst": 0,
+		"saleTax": 0,
+		"price": 399.0,
+		"image": "https://d1b14unh5d6w7g.cloudfront.net/9380494203.01.S001.LXXXXXXX.jpg?Expires=1616341633&Signature=Yyt5/QvKY0ug037qhGlM/wSmZqZUTzSKoU+tiwj2Inn1LWXNyienRs0HHekJ5NeavVDFkHLLhllfwqj4M7Rs6VY9U6Lk9qr7iW7O5BVUIwatbzq9szdOFVPwrSiBlwH8hzS008vtUaQfWD7Up0DVVBfzEnyZsoYrgbidO+8tzhY=&Key-Pair-Id=APKAIUO27P366FGALUMQ",
+		"category": 8
+	}
+]

@@ -5,40 +5,32 @@ import { getState } from "./store/actions/app.actions";
 
 const ItemList = (props) => {
 	useEffect(() => {
-		fetchItemList();
-		console.log("user effect");
+		props.getState();
 	}, []);
 
-	const fetchItemList = () => {
-		props.getState();
-	};
+	const fetchItemList = (items) => {};
 	const displayListOfItems = (items) => {
 		return (
 			<div className="card m-2 cardWidth" key={items.id}>
 				<img
-					src="https://mdbootstrap.com/img/new/standard/city/062.jpg"
-					className="card-img-top"
-					alt="..."
+					src={items.image}
+					className="card-img-top h-25 mt-3"
+					alt={items.title}
 				/>
 				<div className="card-body">
-					<h5 className="card-title">Card title</h5>
+					<h5 className="card-title ">
+						{items.title.substring(0, 200)}
+					</h5>
 					<p className="card-text">
-						Some quick example text to build on the card title and
-						make up the bulk of the card's content. Some quick
-						example text to build on the card title and make up the
-						bulk of the card's content. Some quick example text to
-						build on the card title and make up the bulk of the
-						card's content.
+						{items.description.substring(0, 200)}
 					</p>
-				</div>
-
-				<div className="card-body">
+					<p className="">INR {items.price}</p>
 					<a
-						href="/#"
-						className="card-link"
-						onClick={() => fetchItemList()}
+						href="#!"
+						className="btn btn-primary"
+						onClick={() => fetchItemList(items)}
 					>
-						Card link
+						Add To Card
 					</a>
 				</div>
 			</div>
@@ -56,12 +48,5 @@ function mapStateToProps(state) {
 		list: state?.itemList?.list,
 	};
 }
-// function mapDispatchToProps(dispatch) {
-// 	return {
-// 		increment: () => dispatch({ type: "INCREMENT" }),
-// 		decrement: () => dispatch({ type: "DECREMENT" }),
-// 	};
-// }
-// export default connect(mapStateToProps, mapDispatchToProps)(ItemList);
+
 export default connect(mapStateToProps, { getState })(ItemList);
-// export default ItemList;

@@ -1,3 +1,12 @@
 .cardWidth {
 	width: 18rem;
 }
+.card-body {
+	height: 207px;
+}
+.card-title {
+	height: 70px;
+}
+.card-text {
+	height: 170px;
+}

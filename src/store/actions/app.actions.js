@@ -1,12 +1,10 @@
 import axios from "axios";
-
+import { GET_ITEM_LIST, ITEM_URL } from "../types";
 export const getState = () => async (dispatch) => {
-	const response = await axios.get(
-		"https://jsonplaceholder.typicode.com/todos"
-	);
+	const response = await axios.get(ITEM_URL);
 	if (response.data) {
 		dispatch({
-			type: "GET_CIENEMA",
+			type: GET_ITEM_LIST,
 			payload: response.data,
 		});
 	}

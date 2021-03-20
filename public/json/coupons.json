@@ -1,0 +1,14 @@
+{
+	"asd123": {
+		"id": "123",
+		"code": "asd123",
+		"type": "percentage",
+		"amount": 10
+	},
+	"Holi": {
+		"id": "123",
+		"code": "Holi",
+		"type": "fixed",
+		"amount": 100
+	}
+}
