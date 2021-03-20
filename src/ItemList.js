@@ -2,13 +2,35 @@ import React, { useEffect } from "react";
 import "./App.css";
 import { connect } from "react-redux";
 import { getState } from "./store/actions/app.actions";
+import { withRouter } from "react-router-dom";
 
 const ItemList = (props) => {
 	useEffect(() => {
 		props.getState();
 	}, []);
 
-	const fetchItemList = (items) => {};
+	const fetchItemList = (item) => {
+		let myCart = JSON.parse(localStorage.getItem("cartData"));
+		if (myCart) {
+			let matchFound = false;
+			for (const cartItem of myCart) {
+				if (cartItem.id === item.id) {
+					cartItem["qty"] += 1;
+					matchFound = true;
+					break;
+				}
+			}
+			if (!matchFound) {
+				item["qty"] = 1;
+				myCart = [...myCart, item];
+			}
+		} else {
+			item["qty"] = 1;
+			myCart = [item];
+		}
+		localStorage.setItem("cartData", JSON.stringify(myCart));
+		props.history.push("/cart");
+	};
 	const displayListOfItems = (items) => {
 		return (
 			<div className="card m-2 cardWidth" key={items.id}>
@@ -26,7 +48,6 @@ const ItemList = (props) => {
 					</p>
 					<p className="">INR {items.price}</p>
 					<a
-						href="#!"
 						className="btn btn-primary"
 						onClick={() => fetchItemList(items)}
 					>
@@ -49,4 +70,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps, { getState })(ItemList);
+export default withRouter(connect(mapStateToProps, { getState })(ItemList));

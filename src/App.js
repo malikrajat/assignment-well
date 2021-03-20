@@ -6,6 +6,7 @@ import NotFound from "./NotFound";
 import Header from "./Header";
 import Footer from "./Footer";
 import store from "./store";
+import Cart from "./Cart";
 
 const App = () => {
 	return (
@@ -15,8 +16,8 @@ const App = () => {
 				<Router>
 					<Switch>
 						<Route path="/" component={ItemList} exact />
-						<Route path="cart" component={ItemList} />
-						<Route path="invoice" component={ItemList} />
+						<Route path="/cart" component={Cart} />
+						<Route path="/invoice" component={ItemList} />
 						<Route path="**" component={NotFound} />
 					</Switch>
 				</Router>
