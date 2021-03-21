@@ -5,7 +5,7 @@
 		"type": "percentage",
 		"amount": 10
 	},
-	"Holi": {
+	"holi": {
 		"id": "123",
 		"code": "Holi",
 		"type": "fixed",

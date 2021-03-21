@@ -1,10 +1,13 @@
-import { GET_ITEM_LIST } from "../types";
+import { GET_ITEM_LIST, GET_COUPON_CODE } from "../types";
 
 const initialState = {
 	list: [],
 };
+const initCouponState = {
+	coupons: [],
+};
 
-const appReducer = (state = initialState, action) => {
+export const appReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case GET_ITEM_LIST:
 			const list = action.payload;
@@ -13,4 +16,13 @@ const appReducer = (state = initialState, action) => {
 			return state;
 	}
 };
-export default appReducer;
+
+export const couponReducer = (state = initCouponState, action) => {
+	switch (action.type) {
+		case GET_COUPON_CODE:
+			const coupons = action.payload;
+			return { ...state, coupons };
+		default:
+			return state;
+	}
+};

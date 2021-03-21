@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
-import itemList from "./app.reducer";
+import { appReducer, couponReducer } from "./app.reducer";
 
 const rootReducer = combineReducers({
-	itemList,
+	itemList: appReducer,
+	couponCode: couponReducer,
 });
 
 export default rootReducer;

@@ -46,7 +46,7 @@ const ItemList = (props) => {
 					<p className="card-text">
 						{items.description.substring(0, 200)}
 					</p>
-					<p className="">INR {items.price}</p>
+					<p className="">INR {items.price.toFixed(2)}</p>
 					<a
 						className="btn btn-primary"
 						onClick={() => fetchItemList(items)}

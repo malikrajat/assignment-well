@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { getCoupon } from "./store/actions/app.actions";
+import { withRouter } from "react-router-dom";
 
-function Cart() {
+function Cart(props) {
 	const [cartItems, setcartItems] = useState([]);
 	const [dropDownValue, setdropDownValue] = useState("");
+	const [code, setcode] = useState("");
+
 	useEffect(() => {
 		setcartItems(JSON.parse(localStorage.getItem("cartData")));
 	}, [dropDownValue]);
+
+	useEffect(() => {
+		getTheCode();
+	}, [props.coupon]);
 
 	const qtyUpdate = (items, e) => {
 		for (const cartItem of cartItems) {
@@ -17,16 +26,17 @@ function Cart() {
 		localStorage.setItem("cartData", JSON.stringify(cartItems));
 		setdropDownValue(e.target.value);
 	};
+
 	const makeDropDown = (items) => {
 		return (
 			<div className="def-number-input number-input safari_only mb-0 w-100">
 				<select
-					class="form-select"
+					className="form-select"
 					aria-label="Default select example"
 					value={items.qty}
 					onChange={(e) => qtyUpdate(items, e)}
 				>
-					<option selected>QTY</option>
+					<option>QTY</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -43,9 +53,9 @@ function Cart() {
 			</div>
 		);
 	};
+
 	const removeItem = (itemId) => {
 		for (const index in cartItems) {
-			console.log(index);
 			if (cartItems[index]["id"] === itemId) {
 				cartItems.splice(index, 1);
 				break;
@@ -54,12 +64,13 @@ function Cart() {
 		localStorage.setItem("cartData", JSON.stringify(cartItems));
 		setdropDownValue(itemId);
 	};
+
 	const displayCartItem = (items) => {
 		return (
-			<>
-				<div className="card wish-list mb-3">
+			<React.Fragment key={items.id}>
+				<div className="card wish-list mb-3 card-height">
 					<div className="card-body">
-						<div className="row mb-4" key={items.id}>
+						<div className="row mb-4">
 							<div className="col-md-5 col-lg-3 col-xl-3">
 								<div className="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
 									<img
@@ -87,22 +98,26 @@ function Cart() {
 										<div>
 											<button
 												type="button"
-												class="btn btn-primary"
+												className="btn btn-primary"
 												onClick={() =>
 													removeItem(items.id)
 												}
 											>
-												Remove Item
+												Remove
 											</button>
 											<button
 												type="button"
-												class="btn btn-secondary ml-40"
+												className="btn btn-secondary ml-40"
 											>
 												Add To Wish List
 											</button>
 										</div>
-										<p className="mb-0">
-											<span>INR {items.price}</span>
+										<p className="mb-0 ">
+											<span>
+												<strong>
+													INR {items.price.toFixed(2)}
+												</strong>
+											</span>
 										</p>
 									</div>
 								</div>
@@ -111,8 +126,24 @@ function Cart() {
 					</div>
 				</div>
 				<hr className="mb-4" />
-			</>
+			</React.Fragment>
 		);
+	};
+
+	const applyCode = (e) => {
+		const code = e.target.value;
+		setcode(code);
+		if (code.length >= 4) {
+			props.getCoupon();
+		}
+	};
+	const getTheCode = () => {
+		if (props.coupon[code]) {
+			let { type, amount } = props.coupon[code];
+			console.log(type, amount);
+		} else {
+			console.log("Sorry!, Coupon is not available");
+		}
 	};
 
 	return (
@@ -122,7 +153,7 @@ function Cart() {
 					{cartItems.map((items) => displayCartItem(items))}
 				</div>
 				<div className="col-lg-4">
-					<div className="card mb-3">
+					<div className="card mb-3 card-height">
 						<div className="card-body">
 							<h5 className="mb-3">The total amount of</h5>
 
@@ -154,7 +185,7 @@ function Cart() {
 								type="button"
 								className="btn btn-primary btn-block waves-effect waves-light"
 							>
-								go to checkout
+								Checkout
 							</button>
 						</div>
 					</div>
@@ -169,6 +200,8 @@ function Cart() {
 											id="discount-code1"
 											className="form-control font-weight-light"
 											placeholder="Enter discount code"
+											onChange={(e) => applyCode(e)}
+											value={code}
 										/>
 									</div>
 								</div>
@@ -181,4 +214,9 @@ function Cart() {
 	);
 }
 
-export default Cart;
+function mapStateToProps(state) {
+	return {
+		coupon: state?.couponCode?.coupons,
+	};
+}
+export default withRouter(connect(mapStateToProps, { getCoupon })(Cart));
