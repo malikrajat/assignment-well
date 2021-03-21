@@ -66,7 +66,7 @@
 		"gst": 10,
 		"saleTax": 5,
 		"price": 71900.0,
-		"image": "https://images-na.ssl-images-amazon.com/images/I/71QS992FD5L._SL1500_.jpg",
+		"image": "https://images-na.ssl-images-amazon.com/images/I/71sNNCTfMuL._SL1500_.jpg",
 		"category": 7
 	},
 	{
@@ -76,7 +76,7 @@
 		"gst": 0,
 		"saleTax": 0,
 		"price": 399.0,
-		"image": "https://d1b14unh5d6w7g.cloudfront.net/9380494203.01.S001.LXXXXXXX.jpg?Expires=1616341633&Signature=Yyt5/QvKY0ug037qhGlM/wSmZqZUTzSKoU+tiwj2Inn1LWXNyienRs0HHekJ5NeavVDFkHLLhllfwqj4M7Rs6VY9U6Lk9qr7iW7O5BVUIwatbzq9szdOFVPwrSiBlwH8hzS008vtUaQfWD7Up0DVVBfzEnyZsoYrgbidO+8tzhY=&Key-Pair-Id=APKAIUO27P366FGALUMQ",
+		"image": "https://images-na.ssl-images-amazon.com/images/I/510Y44RHC6L._SX321_BO1,204,203,200_.jpg",
 		"category": 8
 	}
 ]
