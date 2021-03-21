@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import store from "./store";
 import Cart from "./Cart";
 import Invoice from "./Invoice";
+import OrderHistory from "./OrderHistory";
 
 const App = () => {
 	return (
@@ -19,6 +20,7 @@ const App = () => {
 						<Route path="/" component={ItemList} exact />
 						<Route path="/cart" component={Cart} />
 						<Route path="/invoice" component={Invoice} />
+						<Route path="/orders" component={OrderHistory} />
 						<Route path="**" component={NotFound} />
 					</Switch>
 					<Footer />
