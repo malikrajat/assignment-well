@@ -8,11 +8,11 @@ function Cart(props) {
 	const [cartItems, setcartItems] = useState([]);
 	const [dropDownValue, setdropDownValue] = useState("");
 	const [code, setcode] = useState("");
-	let [finalPrice, setfinalPrice] = useState(0);
 	const [totalGst, settotalGst] = useState(0);
 	const [saleTax, setsaleTax] = useState(0);
 	const [itemPrice, setitemPrice] = useState(0);
 	const [couponDiscount, setcouponAdded] = useState(0);
+	let [finalPrice, setfinalPrice] = useState(0);
 
 	useEffect(() => {
 		setcartItems(JSON.parse(localStorage.getItem("cartData")));
@@ -371,4 +371,4 @@ function mapStateToProps(state) {
 		coupon: state?.couponCode?.coupons,
 	};
 }
-export default withRouter(connect(mapStateToProps, { getCoupon })(Cart));
+export default connect(mapStateToProps, { getCoupon })(Cart);

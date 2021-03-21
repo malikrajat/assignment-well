@@ -16,6 +16,9 @@ function Invoice(props) {
 			</tr>
 		);
 	};
+	const continueShopping = () => {
+		props.history.push("/");
+	};
 	return (
 		<div className=" mt-5 mb-3">
 			<div className="row d-flex justify-content-center">
@@ -115,6 +118,13 @@ function Invoice(props) {
 							</div>
 						</div>
 					)}
+					<button
+						type="button"
+						className="btn btn-primary float-end mt-3"
+						onClick={() => continueShopping()}
+					>
+						Continue Shopping
+					</button>
 				</div>
 			</div>
 		</div>

@@ -10,7 +10,6 @@ function OrderHistory() {
 			<>
 				{record.items.map((items, index) => (
 					<tr key={items.id}>
-						<td>{index + 1}</td>
 						<td className="row-width-50">
 							<a href="#!">
 								<img
@@ -53,7 +52,6 @@ function OrderHistory() {
 					<table className="table table-striped table-hover">
 						<thead>
 							<tr>
-								<th>#</th>
 								<th>Title</th>
 								<th>QTY</th>
 								<th>Price</th>
@@ -67,7 +65,7 @@ function OrderHistory() {
 								orderHistory.map((item) =>
 									renderTableData(item, item?.Date)
 								)}
-							{console.log(orderHistory)}
+
 							{!orderHistory && (
 								<tr className="text-center">
 									<td colSpan="7">No Record Found</td>
