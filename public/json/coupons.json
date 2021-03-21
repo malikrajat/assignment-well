@@ -1,14 +1,26 @@
 {
-	"asd123": {
-		"id": "123",
-		"code": "asd123",
+	"FESTIVE10": {
+		"id": "85412",
+		"code": "FESTIVE10",
 		"type": "percentage",
 		"amount": 10
 	},
-	"holi": {
-		"id": "123",
-		"code": "Holi",
+	"JOLLY15": {
+		"id": "87451",
+		"code": "JOLLY15",
 		"type": "fixed",
 		"amount": 100
+	},
+	"FESTIVE125": {
+		"id": "87451",
+		"code": "FESTIVE125",
+		"type": "fixed",
+		"amount": 125
+	},
+	"JOLLY50": {
+		"id": "87451",
+		"code": "JOLLY15",
+		"type": "percentage",
+		"amount": 50
 	}
 }

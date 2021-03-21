@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 function OrderHistory() {
 	const [orderHistory, setorderHistory] = useState([]);
+	useEffect(() => {
+		setorderHistory(JSON.parse(localStorage.getItem("orderHistory")));
+	}, []);
 
 	const renderTableData = (record, date) => {
-		setorderHistory(JSON.parse(localStorage.getItem("orderHistory")));
 		return (
 			<>
 				{record.items.map((items, index) => (
@@ -65,7 +67,8 @@ function OrderHistory() {
 								orderHistory.map((item) =>
 									renderTableData(item, item?.Date)
 								)}
-							{orderHistory?.length < 1 && (
+							{console.log(orderHistory)}
+							{!orderHistory && (
 								<tr className="text-center">
 									<td colSpan="7">No Record Found</td>
 								</tr>
