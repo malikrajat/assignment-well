@@ -7,13 +7,24 @@ function Cart(props) {
 	const [cartItems, setcartItems] = useState([]);
 	const [dropDownValue, setdropDownValue] = useState("");
 	const [code, setcode] = useState("");
+	let [finalPrice, setfinalPrice] = useState(0);
+	const [totalGst, settotalGst] = useState(0);
+	const [saleTax, setsaleTax] = useState(0);
+	const [itemPrice, setitemPrice] = useState(0);
+	const [couponDiscount, setcouponAdded] = useState(0);
 
 	useEffect(() => {
 		setcartItems(JSON.parse(localStorage.getItem("cartData")));
 	}, [dropDownValue]);
 
 	useEffect(() => {
-		getTheCode();
+		calculatePrice(cartItems);
+	}, [cartItems]);
+
+	useEffect(() => {
+		if (code) {
+			getTheCode();
+		}
 	}, [props.coupon]);
 
 	const qtyUpdate = (items, e) => {
@@ -133,60 +144,190 @@ function Cart(props) {
 	const applyCode = (e) => {
 		const code = e.target.value;
 		setcode(code);
-		if (code.length >= 4) {
-			props.getCoupon();
+		if (code?.length >= 4) {
+			if (couponDiscount === 0) {
+				props.getCoupon();
+			} else {
+				console.log("we can apply one coupon at a time");
+			}
 		}
 	};
+
 	const getTheCode = () => {
 		if (props.coupon[code]) {
 			let { type, amount } = props.coupon[code];
-			console.log(type, amount);
+			if (type === "fixed") {
+				finalPrice -= +amount;
+				setfinalPrice(finalPrice.toFixed(0));
+				setcouponAdded(amount.toFixed(0));
+			} else {
+				let price = +(finalPrice * amount) / 100;
+				finalPrice -= price;
+				setfinalPrice(finalPrice.toFixed(0));
+				setcouponAdded(price.toFixed(0));
+			}
 		} else {
 			console.log("Sorry!, Coupon is not available");
 		}
+	};
+
+	const calculatePrice = (cartItem) => {
+		if (cartItem?.length > 0) {
+			let finalPrice = 0;
+			let totalPriceWithTax = 0;
+			let totalPriceWithSaleTax = 0;
+			let totalItemPrice = 0;
+			for (const item of cartItem) {
+				let itemPriceWithQty = item.price * item.qty;
+				totalItemPrice += itemPriceWithQty;
+				if (item.gst !== 0) {
+					let priceWithGst = (itemPriceWithQty * item.gst) / 100;
+					totalPriceWithTax += priceWithGst;
+					finalPrice += priceWithGst;
+				}
+				if (item.saleTax !== 0) {
+					let priceWithSalTax =
+						(itemPriceWithQty * item.saleTax) / 100;
+					totalPriceWithSaleTax += priceWithSalTax;
+					finalPrice += priceWithSalTax;
+				}
+				finalPrice += itemPriceWithQty;
+			}
+			if (couponDiscount !== 0) {
+				finalPrice -= couponDiscount;
+			}
+			settotalGst(totalPriceWithTax.toFixed(0));
+			setsaleTax(totalPriceWithSaleTax.toFixed(0));
+			setfinalPrice(finalPrice.toFixed(0));
+			setitemPrice(totalItemPrice.toFixed(0));
+		}
+	};
+
+	const continueShopping = () => {
+		props.history.push("/");
+	};
+
+	const checkOutCart = () => {
+		let orderHistory = JSON.parse(localStorage.getItem("orderHistory"));
+		let orderDetails = {
+			OrderId: Math.floor(Math.random() * 90000000),
+			UserId: Math.floor(Math.random() * 90000),
+			Date: new Date(),
+			CartId: Math.floor(Math.random() * 90000000),
+			finalPrice: +finalPrice,
+			totalGst: +totalGst,
+			saleTax: +saleTax,
+			itemPrice: +itemPrice,
+			couponDiscount,
+			couponCode: code,
+			priceBeforeDiscount: +(finalPrice + couponDiscount),
+			items: [],
+		};
+
+		for (const item of cartItems) {
+			orderDetails.items.push(item);
+		}
+		console.log(orderDetails);
+		if (orderHistory?.length > 0) {
+			orderHistory = [...orderHistory, orderDetails];
+		} else {
+			orderHistory = [orderDetails];
+		}
+		localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
+		// localStorage.removeItem("cartData")
+		props.history.push("/invoice");
+	};
+	const addItem = () => {
+		props.history.push("/");
+	};
+	const cartIdEmpty = () => {
+		return (
+			<React.Fragment>
+				<div className="card wish-list mb-3 card-height">
+					<div className="card-body">
+						<div className="row mb-4 margin-center">
+							You do not have anything in cart
+							<div className="d-flex align-items-center ">
+								<button
+									type="button"
+									className="btn btn-primary f"
+									onClick={() => addItem()}
+								>
+									Add Item To Cart
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</React.Fragment>
+		);
 	};
 
 	return (
 		<div className="mt-3">
 			<div className="row m-2 ">
 				<div className="col-lg-8">
-					{cartItems.map((items) => displayCartItem(items))}
+					{cartItems &&
+						cartItems.map((items) => displayCartItem(items))}
+
+					{!cartItems && cartIdEmpty()}
+
+					<button
+						type="button"
+						className="btn btn-primary float-end"
+						onClick={() => continueShopping()}
+					>
+						Continue Shopping
+					</button>
 				</div>
 				<div className="col-lg-4">
-					<div className="card mb-3 card-height">
+					<div className="card mb-3 card-height-amount">
 						<div className="card-body">
 							<h5 className="mb-3">The total amount of</h5>
-
 							<ul className="list-group list-group-flush">
 								<li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-									Temporary amount
-									<span>$25.98</span>
+									Price
+									<span>INR {itemPrice}</span>
+								</li>
+								<li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+									Total GST
+									<span>INR {totalGst}</span>
 								</li>
 								<li className="list-group-item d-flex justify-content-between align-items-center px-0">
-									Shipping
-									<span>Gratis</span>
+									Total Sal Tax
+									<span>INR {saleTax}</span>
 								</li>
+
+								{couponDiscount !== 0 && (
+									<li className="list-group-item d-flex justify-content-between align-items-center px-0">
+										Coupon Discount
+										<span>- INR {couponDiscount}</span>
+									</li>
+								)}
+
 								<li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
 									<div>
-										<strong>The total amount of</strong>
+										<strong>Final Amount</strong>
 										<strong>
 											<p className="mb-0">
-												(including VAT)
+												(including GST)
 											</p>
 										</strong>
 									</div>
 									<span>
-										<strong>$53.98</strong>
+										<strong>INR {finalPrice}</strong>
 									</span>
 								</li>
 							</ul>
-
-							<button
-								type="button"
-								className="btn btn-primary btn-block waves-effect waves-light"
-							>
-								Checkout
-							</button>
+							{finalPrice !== 0 && (
+								<button
+									type="button"
+									className="btn btn-primary btn-block waves-effect waves-light"
+									onClick={() => checkOutCart()}
+								>
+									Checkout
+								</button>
+							)}
 						</div>
 					</div>
 

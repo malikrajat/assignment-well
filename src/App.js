@@ -7,21 +7,22 @@ import Header from "./Header";
 import Footer from "./Footer";
 import store from "./store";
 import Cart from "./Cart";
+import Invoice from "./Invoice";
 
 const App = () => {
 	return (
 		<div className="container">
 			<Provider store={store}>
-				<Header />
 				<Router>
+					<Header />
 					<Switch>
 						<Route path="/" component={ItemList} exact />
 						<Route path="/cart" component={Cart} />
-						<Route path="/invoice" component={ItemList} />
+						<Route path="/invoice" component={Invoice} />
 						<Route path="**" component={NotFound} />
 					</Switch>
+					<Footer />
 				</Router>
-				<Footer />
 			</Provider>
 		</div>
 	);

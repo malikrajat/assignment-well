@@ -61,7 +61,7 @@ function Footer() {
 			</div>
 
 			<div className="text-center p-3">
-				© 2021 Copyright:
+				© 2021 Copyright &nbsp;
 				<a className="text-dark" href="/#">
 					Online.com
 				</a>

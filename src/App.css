@@ -14,8 +14,20 @@
 	height: 180px;
 }
 .card-height {
-	height: 260px;
+	height: 240px;
+}
+.card-height-amount {
+	height: 330px;
 }
 .ml-40 {
 	margin-left: 40px;
+}
+.card-link {
+	cursor: hand;
+}
+.margin-center {
+	margin: 8% 35%;
+}
+.height {
+	min-height: 200px;
 }
