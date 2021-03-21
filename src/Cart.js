@@ -12,6 +12,7 @@ function Cart(props) {
 	const [saleTax, setsaleTax] = useState(0);
 	const [itemPrice, setitemPrice] = useState(0);
 	const [couponDiscount, setcouponAdded] = useState(0);
+	// const [debounceState, setdebounceState] = useState(true);
 
 	useEffect(() => {
 		setcartItems(JSON.parse(localStorage.getItem("cartData")));
@@ -234,13 +235,23 @@ function Cart(props) {
 			orderHistory = [orderDetails];
 		}
 		localStorage.setItem("orderHistory", JSON.stringify(orderHistory));
-		// localStorage.removeItem("cartData")
+		localStorage.removeItem("cartData");
 		props.history.push("/invoice");
 	};
+
+	const debounce = (fn) => {
+		let debounceTimer;
+		return () => {
+			clearTimeout(debounceTimer);
+			debounceTimer = setTimeout(() => fn(), 300);
+		};
+	};
+
 	const addItem = () => {
 		props.history.push("/");
 	};
-	const cartIdEmpty = () => {
+
+	const cartIsEmpty = () => {
 		return (
 			<React.Fragment>
 				<div className="card wish-list mb-3 card-height">
@@ -270,11 +281,11 @@ function Cart(props) {
 					{cartItems &&
 						cartItems.map((items) => displayCartItem(items))}
 
-					{!cartItems && cartIdEmpty()}
+					{!cartItems && cartIsEmpty()}
 
 					<button
 						type="button"
-						className="btn btn-primary float-end"
+						className="btn btn-primary float-end mrgnbt17"
 						onClick={() => continueShopping()}
 					>
 						Continue Shopping
@@ -323,7 +334,7 @@ function Cart(props) {
 								<button
 									type="button"
 									className="btn btn-primary btn-block waves-effect waves-light"
-									onClick={() => checkOutCart()}
+									onClick={debounce(checkOutCart)}
 								>
 									Checkout
 								</button>

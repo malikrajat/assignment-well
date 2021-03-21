@@ -6,17 +6,18 @@ function Footer() {
 			<div className="container p-4">
 				<div className="row">
 					<div className="col-lg-6 col-md-12 mb-4 mb-md-0">
-						<h5 className="text-uppercase">Get to Know Us</h5>
-
 						<p>
-							Lorem ipsum dolor sit amet consectetur, adipisicing
-							elit. Iste atque ea quis molestias. Fugiat pariatur
+							Lorem Ipsum is simply dummy text of the printing and
+							typesetting industry. Lorem Ipsum has been the
+							industry's standard dummy text ever since the 1500s,
+							when an unknown printer took a galley of type and
+							scrambled it to make a type specimen book. It has
+							survived not only five centuries, but also the leap
+							into .
 						</p>
 					</div>
 
 					<div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-						<h5 className="text-uppercase">Links</h5>
-
 						<ul className="list-unstyled mb-0">
 							<li>
 								<a href="#!" className="text-dark">
@@ -37,8 +38,6 @@ function Footer() {
 					</div>
 
 					<div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-						<h5 className="text-uppercase mb-0">Connect with Us</h5>
-
 						<ul className="list-unstyled">
 							<li>
 								<a href="#!" className="text-dark">

@@ -50,6 +50,7 @@ const ItemList = (props) => {
 					<a
 						className="btn btn-primary"
 						onClick={() => fetchItemList(items)}
+						href="#!"
 					>
 						Add To Card
 					</a>
