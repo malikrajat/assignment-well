@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getCoupon } from "./store/actions/app.actions";
 import { withRouter } from "react-router-dom";
+
+import { getCoupon } from "../store/actions/app.actions";
 
 function Cart(props) {
 	const [cartItems, setcartItems] = useState([]);
@@ -12,7 +13,6 @@ function Cart(props) {
 	const [saleTax, setsaleTax] = useState(0);
 	const [itemPrice, setitemPrice] = useState(0);
 	const [couponDiscount, setcouponAdded] = useState(0);
-	// const [debounceState, setdebounceState] = useState(true);
 
 	useEffect(() => {
 		setcartItems(JSON.parse(localStorage.getItem("cartData")));

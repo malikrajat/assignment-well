@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import "./App.css";
-import { connect } from "react-redux";
-import { getState } from "./store/actions/app.actions";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+
+import "../App.css";
+import { getState } from "../store/actions/app.actions";
 
 const ItemList = (props) => {
 	useEffect(() => {

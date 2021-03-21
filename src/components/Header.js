@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import "./App.css";
+
+import "../App.css";
 
 function Header(props) {
 	const redirectToCart = (page) => {
